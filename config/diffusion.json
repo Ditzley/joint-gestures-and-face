@@ -1,0 +1,44 @@
+{
+  "model": {
+    "audio_map_dim": 64,
+    "num_poses": 88,
+    "num_pre_poses": 8,
+    "input_dim": 64,
+    "prediction_target": "sample",
+    "use_class_labels": false,
+    "predict_parts": [
+      "face", "upper_body"
+    ],
+    "num_hiddens": 512,
+    "num_hidden_layers": 8,
+    "classifier_free": true,
+    "adapter_reduction_factor": 8
+  },
+  "trainer": {
+    "devices": 1,
+    "strategy": "auto",
+    "accelerator": "gpu",
+    "log_every_n_steps": 100,
+    "max_epochs": 250,
+    "enable_progress_bar": true,
+    "precision": 32,
+    "accumulate_grad_batches": 1,
+    "gradient_clip_val": 1.0,
+    "gradient_clip_algorithm": "norm",
+    "num_sanity_val_steps": 0,
+    "limit_val_batches": 0
+  },
+  "data": {
+    "dataset": "show",
+    "data_root": "ExpressiveWholeBodyDatasetReleaseV1.0/",
+    "pkl_name": "_3d_raw16_full_34.pkl",
+    "speakers": [
+      "oliver",
+      "conan",
+      "seth",
+      "chemistry"
+    ],
+    "batch_size": 512,
+    "num_workers": 8
+  }
+}
